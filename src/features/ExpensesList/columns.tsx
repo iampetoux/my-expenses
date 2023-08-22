@@ -3,6 +3,7 @@ import { Expense } from '@/types/Expense.types';
 import { Button } from '@/components/ui/button';
 import { ArrowUpDown } from 'lucide-react';
 import { categories } from '@/data/categories';
+import { formatCurrency } from '@/lib/expenses';
 
 export const columns: ColumnDef<Expense>[] = [
   {
@@ -24,10 +25,7 @@ export const columns: ColumnDef<Expense>[] = [
     },
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue('amount'))
-      const formatted = new Intl.NumberFormat('fr-FR', {
-        style: 'currency',
-        currency: 'EUR',
-      }).format(amount)
+      const formatted = formatCurrency(amount);
       return <div className="font-medium ml-4">{formatted}</div>
     },
   },
