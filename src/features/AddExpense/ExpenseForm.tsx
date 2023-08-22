@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/select'
 import { categories } from '@/data/categories'
 import { Textarea } from '@/components/ui/textarea'
-import useExpenseForm from '@/utils/hooks/useExpenseForm'
+import useExpenseForm from '@/hooks/useExpenseForm'
 import {
   Form,
   FormControl,
@@ -22,9 +22,10 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { DialogFooter } from '@/components/ui/dialog'
+import { SetExpenseProps, SetModalOpenedProps } from '@/types/Expense.types'
 
-const ExpenseForm = () => {
-  const { form, onSubmit } = useExpenseForm()
+const ExpenseForm = ({ setExpense, setModalOpened }: SetExpenseProps & SetModalOpenedProps) => {
+  const { form, onSubmit } = useExpenseForm({ setExpense, setModalOpened })
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -35,7 +36,7 @@ const ExpenseForm = () => {
             render={({ field }) => (
               <FormItem>
                 <div className="grid grid-cols-4 items-center gap-4 relative">
-                  <FormLabel className="text-right">Montant (€)</FormLabel>
+                  <FormLabel className="text-right">Montant (€) <abbr className="text-red-500">*</abbr></FormLabel>
                   <FormControl>
                     <Input placeholder="9,99" type="number" className="col-span-3" {...field} />
                   </FormControl>
@@ -50,7 +51,7 @@ const ExpenseForm = () => {
             render={({ field }) => (
               <FormItem>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <FormLabel className="text-right">Catégorie</FormLabel>
+                  <FormLabel className="text-right">Catégorie <abbr className="text-red-500">*</abbr></FormLabel>
                   <FormControl>
                     <Select onValueChange={field.onChange} name={field.name}>
                       <SelectTrigger className="col-span-3">
@@ -81,7 +82,7 @@ const ExpenseForm = () => {
                   <FormLabel className="text-right">Note</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Netflix"
+                      placeholder="Netflix, essence, Navigo..."
                       className="col-span-3"
                       onChange={field.onChange}
                       onBlur={field.onBlur}
