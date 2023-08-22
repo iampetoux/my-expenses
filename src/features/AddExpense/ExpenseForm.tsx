@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/select'
 import { categories } from '@/data/categories'
 import { Textarea } from '@/components/ui/textarea'
-import useExpenseForm from '@/utils/hooks/useExpenseForm'
+import useExpenseForm from '@/hooks/useExpenseForm'
 import {
   Form,
   FormControl,
@@ -22,9 +22,10 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { DialogFooter } from '@/components/ui/dialog'
+import { SetExpenseProps, SetModalOpenedProps } from '@/types/Expense.types'
 
-const ExpenseForm = () => {
-  const { form, onSubmit } = useExpenseForm()
+const ExpenseForm = ({ setExpense, setModalOpened }: SetExpenseProps & SetModalOpenedProps) => {
+  const { form, onSubmit } = useExpenseForm({ setExpense, setModalOpened })
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
