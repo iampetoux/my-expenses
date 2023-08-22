@@ -60,8 +60,8 @@ const ExpenseForm = ({ setExpense, setModalOpened }: SetExpenseProps & SetModalO
                       <SelectContent>
                         <SelectGroup>
                           {categories.map((category, categoryKey) => (
-                            <SelectItem key={categoryKey} value={category.id}>
-                              {category.name}
+                            <SelectItem key={categoryKey} value={category.value}>
+                              {category.label}
                             </SelectItem>
                           ))}
                         </SelectGroup>

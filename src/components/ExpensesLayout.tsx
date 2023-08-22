@@ -4,6 +4,7 @@ import AddExpense from '@/features/AddExpense/AddExpense'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useState } from 'react'
 import { initialExpenses } from '@/data/expenses'
+import ExpensesList from '@/features/ExpensesList/ExpensesList'
 
 const ExpensesLayout = () => {
   const [expenses, setExpenses] = useState(initialExpenses)
@@ -124,7 +125,9 @@ const ExpensesLayout = () => {
           </Card>
         </div>
       </TabsContent>
-      <TabsContent value="list">Une belle liste.</TabsContent>
+      <TabsContent value="list">
+        <ExpensesList expenses={expenses} />
+      </TabsContent>
     </Tabs>
   )
 }
