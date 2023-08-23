@@ -33,8 +33,6 @@ const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData, TValu
       []
   )
 
-  console.log(columnFilters);
-
   const table = useReactTable({
     data,
     columns,

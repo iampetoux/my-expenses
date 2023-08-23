@@ -1,11 +1,11 @@
-import React, { SetStateAction } from 'react';
+import React, { SetStateAction } from 'react'
 
 export type Expense = {
-  id: string;
-  amount: number;
-  category: string;
-  note?: string | null;
-  createdAt: Date;
+  id: string
+  amount: number
+  category: string
+  note?: string | null
+  createdAt: Date
 }
 
 export type SetExpenseProps = {
