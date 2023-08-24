@@ -1,9 +1,10 @@
-import { Expense } from '@/types/Expense.types'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { formatCurrency, sumExpensesTotal } from '@/lib/expenses'
 import TotalCategoriesTable from '@/features/Overview/TotalCategoriesTable';
+import useExpenseStore from '@/hooks/useExpenseStore';
 
-const Overview = ({ expenses }: { expenses: Expense[] }) => {
+const Overview = () => {
+  const { expenses } = useExpenseStore()
   const globalTotal = sumExpensesTotal({ expenses })
   return (
     <>
@@ -18,9 +19,9 @@ const Overview = ({ expenses }: { expenses: Expense[] }) => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-euro h-4 w-4 text-muted-foreground"
             >
               <path d="M4 10h12" />

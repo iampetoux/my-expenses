@@ -1,8 +1,9 @@
-import { Expense } from '@/types/Expense.types'
 import DataTable from '@/features/ExpensesList/DataTable'
 import { columns } from './columns'
+import useExpenseStore from '@/hooks/useExpenseStore'
 
-const ExpensesList = ({ expenses }: { expenses: Expense[] }) => {
+const ExpensesList = () => {
+  const { expenses } = useExpenseStore()
   return <DataTable columns={columns} data={expenses} />
 }
 
